@@ -1,4 +1,4 @@
-# 13 steps to install IBM Cloud private - Cloud Native edition v3.1
+# 10 steps to install IBM Cloud private - Cloud Native edition v3.1
 
 ## Prerequisite
 - Before you install make sure that your server meet system requirements for ICP
@@ -13,31 +13,33 @@ __Step 3__ - install docker on all nodes
 ```shell
 sudo icp-docker-18.03.1_x86_64.bin --install
 ```
-__Step 4__ - generate ssh key on boot node
+__Step 4__ - Configure SSH access from boot node to all nodes
+- Generate ssh key on boot node
 ```shell
 sudo ssh-keygen -b 4096 -t rsa -f /root/master.id_rsa -N ""
 ```
-__Step 5__ - Copy ssh key to all other nodes
+- Copy ssh key to all other nodes
 ```shell
 export SSH_KEY=$(cat /root/.ssh/master.id_rsa.pub)
 ssh root@master_node "echo ${SSH_KEY} | tee -a /root/.ssh/authorized_keys"
 ssh root@management_node "echo ${SSH_KEY} | tee -a /root/.ssh/authorized_keys"
 ssh root@worker_node "echo ${SSH_KEY} | tee -a /root/.ssh/authorized_keys"
 ```
-__Step 6__ - On all nodes, check if nameserver is not pointing to a loopback ip
+__Step 5__ - Verify OS configs
+- On all nodes, check if nameserver is not pointing to a loopback ip
 ```shell
 cat /etc/resolv.conf
 ```
-__Step 7__ - On all nodes, check if localhost is removed from `/etc/hosts`.
-Check if hostname of all nodes are all lowercase
-__Step 8__ - From boot node, double check if you can SSH to all other nodes using the generated SSH key on __step 4__ 
+- On all nodes, check if localhost is removed from `/etc/hosts`.
+- On all nodes, check if hostname is all lowercase
+- From boot node, double check if you can SSH to all other nodes using the generated SSH key on __step 4__ 
 
-__Step 9__ - Load icp images on __all nodes__ (this step will improve the installation time by at least 40 mins)
+__Step 6__ - Load icp images on __all nodes__ (this step will improve the installation time by at least 40 mins)
 ```shell
 cd /tmp
 tar xf ibm-cloud-private-x86_64-3.1.0.tar.gz -O | sudo docker load
 ```
-__Step 10__ - On boot node, generate cluster config files
+__Step 7__ - On boot node, generate cluster config files
 ```shell
 mkdir /opt/ibm-cloud-private-3.1.0
 cd /opt/ibm-cloud-private-3.1.0
@@ -46,13 +48,13 @@ cd cluster
 mkdir images
 sudo cp /tmp/ibm-cloud-private-x86_64-3.1.0.tar.gz ./images/
 ```
-__Step 11__ - update `/opt/ibm-cloud-private-3.1.0/cluster/hosts` with the correct IPs of each node
+__Step 8__ - update `/opt/ibm-cloud-private-3.1.0/cluster/hosts` with the correct IPs of each node
 ```shell
 vim /opt/ibm-cloud-private-3.1.0/cluster/hosts
 ```
-__Step 12__ - update `/opt/ibm-cloud-private-3.1.0/cluster/config.yaml` to disable/enable custom features
+__Step 9__ - update `/opt/ibm-cloud-private-3.1.0/cluster/config.yaml` to disable/enable custom features
 Follow this [link](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/installing/config_yaml.html) for this list of config parameters
-__Step 13__ - start the installation
+__Step 10__ - start the installation
 ```
 cd /opt/ibm-cloud-private-3.1.0/cluster
 sudo docker run --net=host -t -e LICENSE=accept -v $(pwd):/installer/cluster ibmcom/icp-inception-amd64:3.1.0-ee install
@@ -60,6 +62,7 @@ sudo docker run --net=host -t -e LICENSE=accept -v $(pwd):/installer/cluster ibm
 
 If all are going well, the install process will take around 2 hrs. At the end of the installation, you will be able to see the URL to access ICP's admin console
 
+# Troubleshooting
 If error occurs, you can SSH to the master node to troubleshoot
 - To identify error pods
 ```shell
