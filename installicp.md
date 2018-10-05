@@ -54,6 +54,7 @@ vim /opt/ibm-cloud-private-3.1.0/cluster/hosts
 ```
 __Step 9__ - update `/opt/ibm-cloud-private-3.1.0/cluster/config.yaml` to disable/enable custom features
 Follow this [link](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/installing/config_yaml.html) for this list of config parameters
+
 __Step 10__ - start the installation
 ```
 cd /opt/ibm-cloud-private-3.1.0/cluster
@@ -61,6 +62,18 @@ sudo docker run --net=host -t -e LICENSE=accept -v $(pwd):/installer/cluster ibm
 ```
 
 If all are going well, the install process will take around 2 hrs. At the end of the installation, you will be able to see the URL to access ICP's admin console
+
+## Notes:
+- Boot nodes is used to install/uninstall/re-install icp and add more worker node to icp cluster. It's important to keep the Boot node safe and back it up if necessary
+- To free up some disk space, you can unload unused Docker images. On the master/proxy/management/VA/worker nodes (except Boot node), run the following command to unload unused Docker images
+```shell
+docker rmi $(docker images --format="{{.Repository}}:{{.Tag}}" | grep "ibmcom")
+```
+- To add more worker node onto the cluster. On the boot node, run the following command:
+```shell
+cd /opt/ibm-cloud-private-3.1.0/cluster
+sudo docker run --net=host -t -e LICENSE=accept -v $(pwd):/installer/cluster ibmcom/icp-inception-amd64:3.1.0-ee worker -l <NEW_WORKER_IP_1>,<NEW_WORKER_IP_2>,<NEW_WORKER_IP_3>
+```
 
 ## Troubleshooting
 If error occurs, you can SSH to the master node to troubleshoot
