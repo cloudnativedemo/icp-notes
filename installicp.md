@@ -1,4 +1,5 @@
-# 10 steps to install IBM Cloud private - Cloud Native edition v3.1
+# 10 steps to install IBM Cloud private
+## Cloud Native edition v3.1
 
 ## Prerequisite
 - Before you install make sure that your server meet system requirements for ICP
