@@ -30,7 +30,7 @@ cat /etc/resolv.conf
 ```
 __Step 7__ - On all nodes, check if localhost is removed from `/etc/hosts`.
 Check if hostname of all nodes are all lowercase
-__Step 8__ - From boot node, double check if you can SSH to all other nodes using the generated SSH key on __step 4__
+__Step 8__ - From boot node, double check if you can SSH to all other nodes using the generated SSH key on __step 4__ 
 __Step 9__ - Load icp images on __all nodes__ (this step will improve the installation time by at least 40 mins)
 ```shell
 cd /tmp
