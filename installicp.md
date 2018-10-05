@@ -62,7 +62,7 @@ sudo docker run --net=host -t -e LICENSE=accept -v $(pwd):/installer/cluster ibm
 
 If all are going well, the install process will take around 2 hrs. At the end of the installation, you will be able to see the URL to access ICP's admin console
 
-# Troubleshooting
+## Troubleshooting
 If error occurs, you can SSH to the master node to troubleshoot
 - To identify error pods
 ```shell
