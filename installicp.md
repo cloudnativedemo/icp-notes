@@ -17,7 +17,8 @@ sudo icp-docker-18.03.1_x86_64.bin --install
 __Step 4__ - Configure SSH access from boot node to all nodes
 - Generate ssh key on boot node
 ```shell
-sudo ssh-keygen -b 4096 -t rsa -f /root/master.id_rsa -N ""
+mkdir -p /root/.ssh
+sudo ssh-keygen -b 4096 -t rsa -f /root/.ssh/master.id_rsa -N ""
 ```
 - Copy ssh key to all other nodes
 ```shell
