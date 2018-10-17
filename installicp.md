@@ -96,8 +96,8 @@ sudo wipefs --all --force /dev/sdxx
 ls -altr /dev/disk/*  | grep sdxx
 ```
 - Copy the symlink under **/dev/disk/by-path:**
-- If there's not any symbol link for the device, you must create one. 
-Note: the new version of GlusterFs only accept alphanumeric for the symbol link, if the existing device symbol link contains special character, you must manually create a new one
+- If there's no symlink for the device, you must create one. 
+Note: the new version of GlusterFs **only accept alphanumeric** for the symlink, if the existing device symbol link contains **special character** e.g colon (:), you must **manually create a symlink for it**
 ```
 # Get device info and copy its DEVPATH
 udevadm info --root --name=/dev/vdb
