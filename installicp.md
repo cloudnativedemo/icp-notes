@@ -100,7 +100,7 @@ ls -altr /dev/disk/*  | grep sdxx
 Note: the new version of GlusterFs **only accept alphanumeric** for the symlink, if the existing device symbol link contains **special character** e.g colon (:), you must **manually create a symlink for it**
 ```
 # Get device info and copy its DEVPATH
-udevadm info --root --name=/dev/vdb
+udevadm info --root --name=/dev/sdxx
 
 # Create a custom udev rules file
 tee /lib/udev/rules.d/10-glusterfs-icp.rules <<-EOF
