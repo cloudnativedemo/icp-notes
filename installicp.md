@@ -154,6 +154,7 @@ management_services:
 
 <details>
   <summary>..* Add GlusterFS settings to `/opt/ibm-cloud-private-3.1.0/cluster/config.yaml`</summary>
+<p>
 ```
 ## GlusterFS Storage Settings
 storage-glusterfs:
@@ -206,6 +207,7 @@ storage-glusterfs:
   podPriorityClass: "system-cluster-critical"
   tolerations: []
 ```
+ </p>
 </details>
 
 ### Add more worker node to an existing cluster
