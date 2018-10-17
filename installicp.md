@@ -156,16 +156,15 @@ management_services:
 ## GlusterFS Storage Settings
 storage-glusterfs:
   nodes:
-    - ip: <worker_node_m_IP_address>
+    - ip: <worker_node_1_IP_address>
       devices:
-        - <link path>/<symlink of device aaa>
-        - <link path>/<symlink of device bbb>
-    - ip: <worker_node_n_IP_address>
+        - /dev/disk/gluster-disk-1
+    - ip: <worker_node_2_IP_address>
       devices:
-        - <link path>/<symlink of device ccc>
-    - ip: <worker_node_o_IP_address>
+        - /dev/disk/gluster-disk-1
+    - ip: <worker_node_3_IP_address>
       devices:
-        - <link path>/<symlink of device ddd>
+        - /dev/disk/gluster-disk-1
   storageClass:
     create: true
     name: glusterfs
