@@ -238,4 +238,4 @@ kubectl logs -n kube-system <POD_NAME>
 ```
 - If you experience a 'No host' error during the install, you might need to
   - Double check the file systems on all nodes. Sometimes file systems are broken
-  - Extend SSH keep-alive time on all nodes as described [here] (https://www.howtogeek.com/howto/linux/keep-your-linux-ssh-session-from-disconnecting/) 
+  - Extend SSH keep-alive time on all nodes as described [here](https://www.howtogeek.com/howto/linux/keep-your-linux-ssh-session-from-disconnecting/) 
