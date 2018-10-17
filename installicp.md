@@ -76,14 +76,14 @@ Glusterfs volumes must reside within worker nodes (3 or above)
 On each worker node:
 - Clean up an existing volume if it's already mounted (if starting with a fresh unmounted volume, you can skip this step)
 ```
-# find <SYMBOL_LINK> of an existing volume
+# find <FILE_SYSTEM> of an existing volume
 df -h
 
 # unmount the volume
-umount <SYMBOL_LINK>
+umount <FILE_SYSTEM>
 
 # remove logical volume
-lvremove -y <SYMBOL_LINK>
+lvremove -y <FILE_SYSTEM>
 
 # locate its device name (e.g. /dev/sdxx) and ensure the volume size is correct
 fdisk -l
