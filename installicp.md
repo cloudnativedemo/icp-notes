@@ -83,7 +83,7 @@ df -h
 umount <SYMBOL_LINK>
 
 # remove logical volume
-lvremove <SYMBOL_LINK>
+lvremove -y <SYMBOL_LINK>
 
 # locate its device name (e.g. /dev/sdxx) and ensure the volume size is correct
 fdisk -l
