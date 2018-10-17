@@ -144,14 +144,14 @@ EOF
 ```
 
 - On the boot node, edit `/opt/ibm-cloud-private-3.1.0/cluster/config.yaml`
-..* Enable storage-glusterfs
+> Enable storage-glusterfs
 ```
 ...
 management_services:
  storage-glusterfs: enabled
 ...
 ```
-..* Add GlusterFS settings to `/opt/ibm-cloud-private-3.1.0/cluster/config.yaml`
+> Add GlusterFS settings to `/opt/ibm-cloud-private-3.1.0/cluster/config.yaml`
 ```
 ## GlusterFS Storage Settings
 storage-glusterfs:
