@@ -50,9 +50,15 @@ cd cluster
 mkdir images
 sudo cp /tmp/ibm-cloud-private-x86_64-3.1.0.tar.gz ./images/
 ```
-__Step 8__ - update `/opt/ibm-cloud-private-3.1.0/cluster/hosts` with the correct IPs of each node
+__Step 8__ 
+- edit `/opt/ibm-cloud-private-3.1.0/cluster/hosts` with the correct IPs of each node
 ```shell
 vim /opt/ibm-cloud-private-3.1.0/cluster/hosts
+```
+- copy ssh key
+```shell
+sudo cp /root/.ssh/master.id_rsa /opt/ibm-cloud-private-3.1.0/cluster/ssh_key
+sudo chmod 400 /opt/ibm-cloud-private-3.1.0/cluster/ssh_key
 ```
 __Step 9__ - update `/opt/ibm-cloud-private-3.1.0/cluster/config.yaml` to disable/enable custom features
 Follow this [link](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/installing/config_yaml.html) for this list of config parameters
