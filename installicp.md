@@ -9,7 +9,9 @@ https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/supported_system_con
 
 ## Install IBM Cloud private
 __Step 1__ - Copy `ibm-cloud-private-x86_64-3.1.0.tar.gz` to all the nodes (Boot/Master/Proxy/Worker/Management/VA nodes)
+
 __Step 2__ - Copy icp-docker-18.03.1_x86_64.bin to all the nodes
+
 __Step 3__ - install docker on all nodes
 ```shell
 sudo icp-docker-18.03.1_x86_64.bin --install
@@ -41,6 +43,7 @@ __Step 6__ - Load icp images on __all nodes__ (this step will improve the instal
 cd /tmp
 tar xf ibm-cloud-private-x86_64-3.1.0.tar.gz -O | sudo docker load
 ```
+
 __Step 7__ - On boot node, generate cluster config files
 ```shell
 mkdir /opt/ibm-cloud-private-3.1.0
@@ -50,6 +53,7 @@ cd cluster
 mkdir images
 sudo cp /tmp/ibm-cloud-private-x86_64-3.1.0.tar.gz ./images/
 ```
+
 __Step 8__ 
 - edit `/opt/ibm-cloud-private-3.1.0/cluster/hosts` with the correct IPs of each node
 ```shell
@@ -60,6 +64,7 @@ vim /opt/ibm-cloud-private-3.1.0/cluster/hosts
 sudo cp /root/.ssh/master.id_rsa /opt/ibm-cloud-private-3.1.0/cluster/ssh_key
 sudo chmod 400 /opt/ibm-cloud-private-3.1.0/cluster/ssh_key
 ```
+
 __Step 9__ - update `/opt/ibm-cloud-private-3.1.0/cluster/config.yaml` to disable/enable custom features
 Follow this [link](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/installing/config_yaml.html) for this list of config parameters
 
