@@ -8,15 +8,15 @@ https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/supported_system_con
 - Download ICP installer from IBM PPA `ibm-cloud-private-x86_64-3.1.0.tar.gz` to `/tmp`
 
 ## Install IBM Cloud private
-__Step 1__ - Copy `ibm-cloud-private-x86_64-3.1.0.tar.gz` to all the nodes (Boot/Master/Proxy/Worker/Management/VA nodes)
+__Step 1__ - Copy `ibm-cloud-private-x86_64-3.1.0.tar.gz` to all the nodes (Boot/Master/Proxy/Worker/Management/VA nodes)  
 
-__Step 2__ - Copy icp-docker-18.03.1_x86_64.bin to all the nodes
+__Step 2__ - Copy icp-docker-18.03.1_x86_64.bin to all the nodes  
 
-__Step 3__ - install docker on all nodes
+__Step 3__ - install docker on all nodes  
 ```shell
 sudo icp-docker-18.03.1_x86_64.bin --install
 ```
-__Step 4__ - Configure SSH access from boot node to all nodes
+__Step 4__ - Configure SSH access from boot node to all nodes  
 - Generate ssh key on boot node
 ```shell
 mkdir -p /root/.ssh
