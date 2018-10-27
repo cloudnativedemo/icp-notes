@@ -4,6 +4,10 @@
 > Developers, who don't have `Cluster Administrator` role, cannnot create Istio resources such as Gateways, VirtualServices, Destination rules
 ### Solution
 > Assign developers as administrator to a namespace
+> From a terminal, login as a cluster admin
+```
+cloudctl login
+```
 > Update the `clusterroles/icp-admin-aggregate`
 ```
 kubectl edit clusterroles/icp-admin-aggregate
