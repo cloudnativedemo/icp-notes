@@ -29,4 +29,8 @@ kubectl edit clusterroles/icp-admin-aggregate
   - list
 ```
 > Type colon wq to save (as of vim)  
-> Try to create an Istio resource
+> Logout and login again with a developer user  
+> Try to list an Istio resource
+```
+kubectl get virtualservices
+```
