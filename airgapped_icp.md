@@ -9,7 +9,7 @@ In an airgapped environment (no Internet access), we have to make both the helm 
 ## Create a local helm chart repo
 You need to have a web/file server to host your helm charts. In my environment, I have a web server for helm chart @ `http://172.23.50.125/icp-charts`
 
-***if you don't have one you can quickly set up a new web server using a http server docker container. Here's how: *** 
+***if you don't have one you can quickly set up a new web server using a http server docker container on the boot node. Here's how: *** 
 ```
 mkdir /httpserver
 cd /httpserver
