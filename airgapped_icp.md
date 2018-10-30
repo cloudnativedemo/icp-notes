@@ -9,6 +9,13 @@ In an airgapped environment (no Internet access), we have to make both the helm 
 ## Create a local helm chart repo
 You need to have a web/file server to host your helm charts. In my environment, I have a web server for helm chart @ `http://172.23.50.125/icp-charts`
 
+***if you don't have one you can quickly set up a new web server using a http server docker container. Here's how: *** 
+```
+mkdir /httpserver
+cd /httpserver
+docker run -dit --name apache-httpd -p 80:80 -v "$PWD":/usr/local/apache2/htdocs/ httpd:2.4
+```
+
 Follow these steps to make the IBM Cloud private helm charts available in your own environment (also applicable to other helm repo):
 
 __Step 1__ - Git clone the repo into your temp folder
