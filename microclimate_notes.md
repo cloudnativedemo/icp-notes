@@ -55,6 +55,11 @@ __7. Update ImagePullSecret for `microclimate-pipeline-deployments` namespace
 kubectl patch serviceaccount default --namespace microclimate-pipeline-deployments -p '{"imagePullSecrets": [{"name": "microclimate-pipeline-secret"}]}'
 ```
 
+__8. Add ibm-charts Helm repo
+```
+helm repo add ibm-charts https://raw.githubusercontent.com/IBM/charts/master/repo/stable/
+```
+
 __8. Deploy microclimate Helm chart
 ```
 helm install --name microclimate --namespace default --set global.rbac.serviceAccountName=micro-sa,jenkins.rbac.serviceAccountName=pipeline-sa,hostName=microclimate.172.23.52.247.nip.io,jenkins.Master.HostName=jenkins.172.23.52.247.nip.io ibm-charts/ibm-microclimate --tls
