@@ -25,9 +25,11 @@ sudo ssh-keygen -b 4096 -t rsa -f /root/.ssh/master.id_rsa -N ""
 - Copy ssh key to all other nodes
 ```shell
 export SSH_KEY=$(cat /root/.ssh/master.id_rsa.pub)
-ssh root@master_node "echo ${SSH_KEY} | tee -a /root/.ssh/authorized_keys"
-ssh root@management_node "echo ${SSH_KEY} | tee -a /root/.ssh/authorized_keys"
-ssh root@worker_node "echo ${SSH_KEY} | tee -a /root/.ssh/authorized_keys"
+ssh root@icpmaster "echo ${SSH_KEY} | tee -a /root/.ssh/authorized_keys"
+ssh root@icpmgmt "echo ${SSH_KEY} | tee -a /root/.ssh/authorized_keys"
+ssh root@icpworker01 "echo ${SSH_KEY} | tee -a /root/.ssh/authorized_keys"
+ssh root@icpworker02 "echo ${SSH_KEY} | tee -a /root/.ssh/authorized_keys"
+ssh root@icpworker03 "echo ${SSH_KEY} | tee -a /root/.ssh/authorized_keys"
 ```
 __Step 5__ - Verify OS configs
 - On all nodes, check if nameserver is not pointing to a loopback ip
