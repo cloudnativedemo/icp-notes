@@ -1,4 +1,5 @@
-# Prepare ICP for microclimate deployment
+# Customise Microclimate to make it work with MQ projects (and others)
+## Prepare ICP for microclimate deployment
 Refer [here](https://github.com/IBM/charts/tree/master/stable/ibm-microclimate) for full instructions
 
 __1. Create pipeline deployment namespace__
@@ -54,6 +55,16 @@ __7. Update ImagePullSecret for `microclimate-pipeline-deployments` namespace__
 ```
 kubectl patch serviceaccount default --namespace microclimate-pipeline-deployments -p '{"imagePullSecrets": [{"name": "microclimate-pipeline-secret"}]}'
 ```
+
+__8. Customise Jenkins library__
+By default, the Jenkins library parameter is pointing to https://github.com/microclimate-dev2ops/jenkins-library
+This Jenkins library was a part of the Microclimate DevOps process. When a pipeline is created within a project in Microclimate, microclimate will create a Jenkins pipeline. The pipeline uses this library to
+- Pull the code from github repo
+- Build a Docker image based on a Dockerfile found in the repo
+- Authenticate and push the image into ICP's private registry
+- Notify Microclimate to move to the next stage (e.g. deploy)
+
+
 
 __8. Add ibm-charts Helm repo__
 ```
