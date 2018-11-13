@@ -111,7 +111,7 @@ ___Note:___ Replace <172.23.52.247> with your <PROXY_IP>
 >__Via ICP catalog__ . 
 * Select ibm-microclimate from ICP catalog > click `Configure` . 
 * Provide values for the following parameters:  
-.. * `Helm release name`: your-microclimate-release-name . 
+  .. * `Helm release name`: your-microclimate-release-name . 
 
 .. * `Namespace`: default (or your preferred namespace) . 
 
