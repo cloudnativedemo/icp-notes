@@ -122,7 +122,20 @@ ___Note:___ Replace <172.23.52.247> with your <PROXY_IP>
   * `Service account name`: pipeline-sa 
   * Click `deploy` 
 
-### Troubleshooting
+## Create a project in Microclimate and Deploy
+Once the Microclimate helm deployment completed, you can start to deploy your custom project  
+1. Make sure that your project contains a Dockerfile, Jenkinsfile and a chart directory (for helm chart)  
+2. Launch Microclimate (https://microclimate.172.23.52.247.nip.io - replace with your own microclimate hostname) and accept licensing agreement (for first launch only)  
+3. Select Projects > Click `New Project`  
+4. Select `Java` project type and provide a `project name` > click `Next`  
+5. Select `Microprofile/J2EE` and keep default value for `Context root` > click `Create`  
+
+6. Once the project is created, select `Pipeline` on the left menu  
+7. Click `Create pipeline`, and provide name and github repo of the pipeline > click `Create pipeline` to create a Jenkins pipeline  
+8. Switch to Jenkins (https://jenkins.172.23.52.247.nip.io - replace with your Jenkins hostname) to see if the pipeline has been created and built (refer to the troubleshooting section below if you have to wait for too long)  
+
+
+## Troubleshooting
 * When your Jenkins pipeline keeps looking for an executor for too long, there's probably an error occurred within your Jenkins containers. To identify the issue:
   * Identify the Jenkins pod name: `kubectl get pods -n <NAME_SPACE_WHERE_JENKINS_INSTALLED> | grep jenkins`
   * View the log: `kubectl log -n <NAME_SPACE_WHERE_JENKINS_INSTALLED> <JENKINS_POD_NAME> -f`
