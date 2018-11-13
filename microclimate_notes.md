@@ -121,3 +121,10 @@ ___Note:___ Replace <172.23.52.247> with your <PROXY_IP>
   * `Jenkins hostname`: jenkins.172.23.52.247.nip.io (replace with your <jenkins.PROXY_IP.nip.io> or your own hostname) 
   * `Service account name`: pipeline-sa 
   * Click `deploy` 
+
+### Troubleshooting
+* When your Jenkins pipeline keeps looking for an executor for too long, there's probably an error occurred within your Jenkins containers. To identify the issue:
+  * Identify the Jenkins pod name: `kubectl get pods -n <NAME_SPACE_WHERE_JENKINS_INSTALLED> | grep jenkins`
+  * View the log: `kubectl log -n <NAME_SPACE_WHERE_JENKINS_INSTALLED> <JENKINS_POD_NAME> -f`
+  * Most of the case I found caused by cluster image policy is not defined, you might need to update the default `clusterimagepolicy`
+    * `kubectl edit clusterimagepolicies ibmcloud-default-cluster-image-policy`
