@@ -87,19 +87,22 @@ Unfortunately, Microclimate only deploy it's supported project types e.g. Swift,
          }
 ```
 
-* Note: in my deployCommand, I've created one new variable `${helmRelease}`. The variable is defined on the top of the script (line 56 of the microserviceBuilderPipeline.groovy). Alternatively, you can just reuse `${image}` as your helm release name
+* ___Note:___ in my deployCommand, I've created one new variable `${helmRelease}`. The variable is defined on the top of the script (line 56 of the microserviceBuilderPipeline.groovy). Alternatively, you can just reuse `${image}` as your helm release name . 
 ```groovy
   def helmRelease = (config.releaseName ?: config.image ?: "").trim()
 ```
 
+* My forked updated Jenkins library repo can be found [here](https://github.com/cloudnativedemo/jenkins-library) . 
 
+__8. Deploy Microclimate helm chart__
 
-__8. Add ibm-charts Helm repo__
+### Via Helm command line
+>__Add ibm-charts Helm repo__
 ```
 helm repo add ibm-charts https://raw.githubusercontent.com/IBM/charts/master/repo/stable/
 ```
 
-__9. Deploy microclimate Helm chart__
+>__Deploy microclimate Helm chart__
 ```
 helm install --name microclimate --namespace default --set global.rbac.serviceAccountName=micro-sa,jenkins.rbac.serviceAccountName=pipeline-sa,hostName=microclimate.172.23.52.247.nip.io,jenkins.Master.HostName=jenkins.172.23.52.247.nip.io ibm-charts/ibm-microclimate --tls
 ```
