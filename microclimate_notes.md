@@ -96,14 +96,27 @@ Unfortunately, Microclimate only deploy it's supported project types e.g. Swift,
 
 __8. Deploy Microclimate helm chart__
 
-### Via Helm command line
->__Add ibm-charts Helm repo__
+>__Via Helm command line__ . 
+* __Add ibm-charts Helm repo__
 ```
 helm repo add ibm-charts https://raw.githubusercontent.com/IBM/charts/master/repo/stable/
 ```
 
->__Deploy microclimate Helm chart__
+* __Deploy microclimate Helm chart__
 ```
-helm install --name microclimate --namespace default --set global.rbac.serviceAccountName=micro-sa,jenkins.rbac.serviceAccountName=pipeline-sa,hostName=microclimate.172.23.52.247.nip.io,jenkins.Master.HostName=jenkins.172.23.52.247.nip.io ibm-charts/ibm-microclimate --tls
+helm install --name microclimate --namespace default --set global.rbac.serviceAccountName=micro-sa,jenkins.rbac.serviceAccountName=pipeline-sa,hostName=microclimate.172.23.52.247.nip.io,jenkins.Master.HostName=jenkins.172.23.52.247.nip.io,jenkins.Pipeline.Template.RepositoryUrl=https://github.com/cloudnativedemo/jenkins-library.git,jenkins.Pipeline.Template.Version=master ibm-charts/ibm-microclimate --tls
 ```
+___Note:___ Replace <172.23.52.247> with your <PROXY_IP>
+
+>__Via ICP catalog__ . 
+* Select ibm-microclimate from ICP catalog > click `Configure` . 
+* Provide values for the following parameters:
+..* `Helm release name`: your-microclimate-release-name
+..* `Namespace`: default (or your preferred namespace)
+..* `Microclimate hostname`: microclimate.172.23.52.247.nip.io (replace with your <microclimate.PROXY_IP.nip.io> or your own hostname)
+..* Ensure that you've already created Persistent Volumes for Microclimate and Jenkins
+..* `Service account name for Portal`: micro-sa
+..* `Jenkins library repository`: https://github.com/cloudnativedemo/jenkins-library.git
+..* `Jenkins hostname`: jenkins.172.23.52.247.nip.io (replace with your <jenkins.PROXY_IP.nip.io> or your own hostname)
+..* `Service account name`: pipeline-sa
 
