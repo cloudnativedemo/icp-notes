@@ -111,15 +111,12 @@ ___Note:___ Replace <172.23.52.247> with your <PROXY_IP>
 >__Via ICP catalog__ . 
 * Select ibm-microclimate from ICP catalog > click `Configure` . 
 * Provide values for the following parameters:  
-
 * `Helm release name`: your-microclimate-release-name . 
-
 * `Namespace`: default (or your preferred namespace) . 
-
-.. * `Microclimate hostname`: microclimate.172.23.52.247.nip.io (replace with your <microclimate.PROXY_IP.nip.io> or your own hostname) . 
-.. * Ensure that you've already created Persistent Volumes for Microclimate and Jenkins . 
-.. * `Service account name for Portal`: micro-sa . 
-.. * `Jenkins library repository`: https://github.com/cloudnativedemo/jenkins-library.git . 
-.. * `Jenkins hostname`: jenkins.172.23.52.247.nip.io (replace with your <jenkins.PROXY_IP.nip.io> or your own hostname) . 
-.. * `Service account name`: pipeline-sa . 
-.. * Click `deploy` . 
+* `Microclimate hostname`: microclimate.172.23.52.247.nip.io (replace with your <microclimate.PROXY_IP.nip.io> or your own hostname) . 
+* Ensure that you've already created Persistent Volumes for Microclimate and Jenkins . 
+* `Service account name for Portal`: micro-sa . 
+* `Jenkins library repository`: https://github.com/cloudnativedemo/jenkins-library.git . 
+* `Jenkins hostname`: jenkins.172.23.52.247.nip.io (replace with your <jenkins.PROXY_IP.nip.io> or your own hostname) . 
+* `Service account name`: pipeline-sa . 
+* Click `deploy` . 
