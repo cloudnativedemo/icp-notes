@@ -113,7 +113,7 @@ __Via ICP catalog__ .
 
 * Select ibm-microclimate from ICP catalog > click `Configure` . 
 * Provide values for the following parameters:  
-..* `Helm release name`: your-microclimate-release-name . 
+  * `Helm release name`: your-microclimate-release-name . 
 * `Namespace`: default (or your preferred namespace) . 
 * `Microclimate hostname`: microclimate.172.23.52.247.nip.io (replace with your <microclimate.PROXY_IP.nip.io> or your own hostname) . 
 * Ensure that you've already created Persistent Volumes for Microclimate and Jenkins . 
