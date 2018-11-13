@@ -119,4 +119,4 @@ ___Note:___ Replace <172.23.52.247> with your <PROXY_IP>
 ..* `Jenkins library repository`: https://github.com/cloudnativedemo/jenkins-library.git
 ..* `Jenkins hostname`: jenkins.172.23.52.247.nip.io (replace with your <jenkins.PROXY_IP.nip.io> or your own hostname)
 ..* `Service account name`: pipeline-sa
-
+..* Click `deploy`
