@@ -96,7 +96,7 @@ Unfortunately, Microclimate only deploy it's supported project types e.g. Swift,
 
 __8. Deploy Microclimate helm chart__
 
->__Via Helm command line__ . 
+#### __Via Helm command line__ . 
 * __Add ibm-charts Helm repo__
 ```
 helm repo add ibm-charts https://raw.githubusercontent.com/IBM/charts/master/repo/stable/
@@ -108,7 +108,7 @@ helm install --name microclimate --namespace default --set global.rbac.serviceAc
 ```
 ___Note:___ Replace <172.23.52.247> with your <PROXY_IP>
 
->__Via ICP catalog__ . 
+#### __Via ICP catalog__ . 
 
 * Select ibm-microclimate from ICP catalog > click `Configure` 
 * Provide values for the following parameters:  
