@@ -63,7 +63,7 @@ vim /opt/ibm-cloud-private-3.1.1/cluster/hosts
 ```
 - copy ssh key
 ```shell
-sudo cp /root/.ssh/master.id_rsa /opt/ibm-cloud-private-3.1.0/cluster/ssh_key
+sudo cp /root/.ssh/master.id_rsa /opt/ibm-cloud-private-3.1.1/cluster/ssh_key
 sudo chmod 400 /opt/ibm-cloud-private-3.1.1/cluster/ssh_key
 ```
 
