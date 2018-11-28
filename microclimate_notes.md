@@ -104,7 +104,7 @@ helm repo add ibm-charts https://raw.githubusercontent.com/IBM/charts/master/rep
 
 * __Deploy microclimate Helm chart__
 ```
-helm install --name microclimate --namespace default --set global.rbac.serviceAccountName=micro-sa,jenkins.rbac.serviceAccountName=pipeline-sa,hostName=microclimate.172.23.52.247.nip.io,jenkins.Master.HostName=jenkins.172.23.52.247.nip.io,jenkins.Pipeline.Template.RepositoryUrl=https://github.com/cloudnativedemo/jenkins-library.git,jenkins.Pipeline.Template.Version=master ibm-charts/ibm-microclimate --tls
+helm install --name microclimate --namespace <target namespace> --set global.rbac.serviceAccountName=micro-sa,jenkins.rbac.serviceAccountName=pipeline-sa,global.ingressDomain=172.23.52.247.nip.io,jenkins.Pipeline.Template.RepositoryUrl=https://github.com/cloudnativedemo/jenkins-library.git,jenkins.Pipeline.Template.Version=master ibm-charts/ibm-microclimate --tls
 ```
 ___Note:___ Replace <172.23.52.247> with your <PROXY_IP>
 
