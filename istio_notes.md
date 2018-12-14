@@ -20,6 +20,8 @@ kubectl edit clusterroles/icp-admin-aggregate
   - gateways
   - virtualservices
   - destinationrules
+  - envoyfilters
+  - serviceentries
   verbs:
   - create
   - delete
