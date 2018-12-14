@@ -2,7 +2,7 @@
 
 __Step 1 - Generate Persistent Volume yaml__
 ```shell
-./gensample.sh
+. ./gensample.sh
 ```
 
 __Step 2 - Login with cloudctl__
@@ -12,5 +12,5 @@ cloudctl login
 
 __Step 3 - Run batch job to create PVs__
 ```shell
-./createbatch.sh --input-dir=out
+. ./createbatch.sh --input-dir=out
 ```
