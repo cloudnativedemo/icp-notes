@@ -85,8 +85,8 @@ Follow this [link](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/i
 * Refer to the [GlusterFS configuration](https://github.com/cloudnativedemo/icp-notes/blob/master/installicp.md#configure-glusterfs-during-the-icp-install-optional) below prior to step 10 if you wish to install GlusterFS
 
 * For AWS, set the followings on config.yaml:
-- cloud_provider: aws
-- kubelet_nodename: nodename
+  - cloud_provider: aws
+  - kubelet_nodename: nodename
 
 __Step 10__ - start the installation
 ```
