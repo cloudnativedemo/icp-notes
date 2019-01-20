@@ -6,7 +6,7 @@
 https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/supported_system_config/hardware_reqs.html
 - Download ICP's preconfigured Docker engine from IBM PPA `icp-docker-18.03.1_x86_64.bin` to `/tmp`
 - Download ICP installer from IBM PPA `ibm-cloud-private-x86_64-3.1.0.tar.gz` to `/tmp`
-### Hardware requirements:
+### Hardware requirements
 
 | Node name                                        | # node | CPU | RAM (GB) | File system                                                                                                                                                    | FS type                | OS                                 |
 |--------------------------------------------------|--------|-----|----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------|------------------------------------|
@@ -14,6 +14,10 @@ https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/supported_system_con
 | Master/proxy                                     | 1      | 8   | 16       | /: 60GB /var: 240GB<br> /var/lib/docker: 100GB<br> /var/lib/etcd: 15GB<br> /var/lib/icp: 100GB<br> /var/lib/mysql: 10GB<br> /var/lib/registry: 100GB<br> /var/lib/kubelet: 10GB | ext4, or,xfs (ftype=1) | RHEL 7.3 or above, or Ubuntu 16.01 |
 | Worker                                           | 3      | 4   | 16       | /: 60GB<br> /var/lib/docker: 100GB<br> /var/lib/kubelet: 10GB                                                                                                       | ext4, or,xfs (ftype=1) | RHEL 7.3 or above, or Ubuntu 16.01 |
 | Mgmt + VA (optional for monitoring and security) | 1      | 12  | 14       | /: 60GB<br> /var: 240GB<br> /var/lib/docker: 100GB<br> /var/lib/icp: 100GB<br> /var/lib/kubelet: 10GB                                                                      | ext4, or,xfs (ftype=1) | RHEL 7.3 or above, or Ubuntu 16.01 |
+
+### Optional: Configure AWS environment
+Follow this article to prepare AWS resources if ICP is AWS Cloud platform
+https://medium.com/ibm-cloud/run-ibm-cloud-private-on-amazon-web-services-aws-cloud-platform-c2cec1020ba8
 
 ## Install IBM Cloud private
 __Step 1__ - Copy `ibm-cloud-private-x86_64-3.1.1.tar.gz` to all the nodes (Boot/Master/Proxy/Worker/Management/VA nodes)  
@@ -75,10 +79,14 @@ sudo cp /root/.ssh/master.id_rsa /opt/ibm-cloud-private-3.1.1/cluster/ssh_key
 sudo chmod 400 /opt/ibm-cloud-private-3.1.1/cluster/ssh_key
 ```
 
-__Step 9__ - update `/opt/ibm-cloud-private-3.1.0/cluster/config.yaml` to disable/enable custom features
+__Step 9__ - update `/opt/ibm-cloud-private-3.1.1/cluster/config.yaml` to disable/enable custom features
 Follow this [link](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/installing/config_yaml.html) for this list of config parameters
 
 * Refer to the [GlusterFS configuration](https://github.com/cloudnativedemo/icp-notes/blob/master/installicp.md#configure-glusterfs-during-the-icp-install-optional) below prior to step 10 if you wish to install GlusterFS
+
+* For AWS, set the followings on config.yaml:
+- cloud_provider: aws
+- kubelet_nodename: nodename
 
 __Step 10__ - start the installation
 ```
