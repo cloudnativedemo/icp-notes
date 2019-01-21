@@ -89,6 +89,10 @@ Follow this [link](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/i
   - kubelet_nodename: nodename
   - ansible_user: <ec2/ubuntu>
   - ansible_become: true # allow ansible user to sudo
+  - calico_tunnel_mtu: 8981
+  - cluster_CA_domain:
+  - cluster_lb_address:
+  - proxy_lb_address:
 
 __Step 10__ - start the installation
 ```
