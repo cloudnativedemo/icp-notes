@@ -87,6 +87,8 @@ Follow this [link](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/i
 * For AWS, set the followings on config.yaml:
   - cloud_provider: aws
   - kubelet_nodename: nodename
+  - ansible_user: <ec2/ubuntu>
+  - ansible_become: true # allow ansible user to sudo
 
 __Step 10__ - start the installation
 ```
