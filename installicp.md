@@ -90,9 +90,9 @@ Follow this [link](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/i
   - ansible_user: <ec2/ubuntu>
   - ansible_become: true # allow ansible user to sudo
   - calico_tunnel_mtu: 8981
-  - cluster_CA_domain:
-  - cluster_lb_address:
-  - proxy_lb_address:
+  - cluster_CA_domain: #in lower case
+  - cluster_lb_address: #in lower case
+  - proxy_lb_address: #in lower case
 
 __Step 10__ - start the installation
 ```
