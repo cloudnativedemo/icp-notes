@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: cam-bpd-appdata-pv
+  labels:
+    type: cam-bpd-appdata
+spec:
+  capacity:
+    storage: 20Gi
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Recycle
+  nfs:
+    path: /mnt/icp/nfs/cam/CAM_BPD_appdata
+    server: 10.63.215.139
