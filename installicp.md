@@ -127,7 +127,7 @@ docker login <CLUSTER_DOMAIN>:8500 #with icp cluster username and password as de
 ```
 
 ### Pre-create persistent volumes for your workloads
-Follow this [instructions] (https://github.com/cloudnativedemo/icp-notes/tree/master/scripts/pv) for bulk create PVs for your workloads
+Follow this [instructions](https://github.com/cloudnativedemo/icp-notes/tree/master/scripts/pv) for bulk create PVs for your workloads
 
 ---
 ### Configure GlusterFS during the icp install (optional)
