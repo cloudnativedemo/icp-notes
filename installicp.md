@@ -102,6 +102,33 @@ sudo docker run --net=host -t -e LICENSE=accept -v $(pwd):/installer/cluster ibm
 
 If all are going well, the install process will take around 2 hrs. At the end of the installation, you will be able to see the URL to access ICP's admin console
 
+## Post-installation
+
+### Setting up CLI tools
+You can download the CLI tools (`cloudctl` `kubectl` `helm`) into your Linux workstation. You can take advantage of the boot node as your client workstation. Links to the tools are available on the `admin console` > `Command Line Tools`  
+  ```shell
+  curl -kLo cloudctl https://<MASTER_IP>:8443/api/cli/cloudctl-linux-amd64
+  curl -kLo kubectl https://<MASTER_IP>:8443/api/cli/kubectl-linux-amd64
+  curl -kLo helm-linux-amd64.tar.gz https://<MASTER_IP>:8443/api/cli/helm-linux-amd64.tar.gz;tar zxf helm-linux-amd64.tar.gz; cp linux-amd64/helm ./
+  chmod +x cloudctl kubectl helm
+  cp cloudctl kubectl helm /usr/local/bin
+  ```
+
+### Setting up Docker CA cert
+Copy ca.crt from master node to your workstation (boot node)
+On your workstation
+```shell
+mkdir -p /etc/docker/certs.d/<CLUSTER_DOMAIN>\:8500 #as defined in config.yaml
+scp icpmaster:/etc/docker/certs.d/<CLUSTER_DOMAIN>\:8500/ca.crt /etc/docker/certs.d/<CLUSTER_DOMAIN>\:8500
+```
+Test login to your docker registry
+```shell
+docker login <CLUSTER_DOMAIN>:8500 #with icp cluster username and password as defined in config.yaml
+```
+
+### Pre-create persistent volumes for your workloads
+Follow this [instructions] (https://github.com/cloudnativedemo/icp-notes/tree/master/scripts/pv) for bulk create PVs for your workloads
+
 ---
 ### Configure GlusterFS during the icp install (optional)
 GlusterFs configuration guide with more details can be found on [ICP Knowledge Centre](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.1/manage_cluster/glusterfs_land.html)
