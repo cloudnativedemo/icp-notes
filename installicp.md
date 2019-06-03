@@ -1,5 +1,5 @@
 # 10 steps to install IBM Cloud private
-## Cloud Native edition v3.1.1
+## Cloud Native edition v3.2
 
 ## Prerequisite
 - Before you install make sure that your server meet system requirements for ICP
@@ -20,7 +20,7 @@ Follow this article to prepare AWS resources if ICP is AWS Cloud platform
 https://medium.com/ibm-cloud/run-ibm-cloud-private-on-amazon-web-services-aws-cloud-platform-c2cec1020ba8
 
 ## Install IBM Cloud private
-__Step 1__ - Copy `ibm-cloud-private-x86_64-3.1.1.tar.gz` to all the nodes (Boot/Master/Proxy/Worker/Management/VA nodes)  
+__Step 1__ - Copy `ibm-cloud-private-x86_64-3.2.tar.gz` to all the nodes (Boot/Master/Proxy/Worker/Management/VA nodes)  
 
 __Step 2__ - Copy icp-docker-18.03.1_x86_64.bin to all the nodes  
 
@@ -55,31 +55,31 @@ cat /etc/resolv.conf
 __Step 6__ - Load icp images on __all nodes__ (this step will improve the installation time by at least 40 mins)
 ```shell
 cd /tmp
-tar xf ibm-cloud-private-x86_64-3.1.1.tar.gz -O | sudo docker load
+tar xf ibm-cloud-private-x86_64-3.2.tar.gz -O | sudo docker load
 ```
 
 __Step 7__ - On boot node, generate cluster config files
 ```shell
-mkdir /opt/ibm-cloud-private-3.1.1
-cd /opt/ibm-cloud-private-3.1.1
-sudo docker run -v $(pwd):/data -e LICENSE=accept ibmcom/icp-inception-amd64:3.1.1-ee cp -r cluster /data
+mkdir /opt/ibm-cloud-private-3.2
+cd /opt/ibm-cloud-private-3.2
+sudo docker run -v $(pwd):/data -e LICENSE=accept ibmcom/icp-inception-amd64:3.2-ee cp -r cluster /data
 cd cluster
 mkdir images
-sudo cp /tmp/ibm-cloud-private-x86_64-3.1.1.tar.gz ./images/
+sudo cp /tmp/ibm-cloud-private-x86_64-3.2.tar.gz ./images/
 ```
 
 __Step 8__ 
-- edit `/opt/ibm-cloud-private-3.1.1/cluster/hosts` with the correct IPs of each node
+- edit `/opt/ibm-cloud-private-3.2/cluster/hosts` with the correct IPs of each node
 ```shell
-vim /opt/ibm-cloud-private-3.1.1/cluster/hosts
+vim /opt/ibm-cloud-private-3.2/cluster/hosts
 ```
 - copy ssh key
 ```shell
-sudo cp /root/.ssh/master.id_rsa /opt/ibm-cloud-private-3.1.1/cluster/ssh_key
-sudo chmod 400 /opt/ibm-cloud-private-3.1.1/cluster/ssh_key
+sudo cp /root/.ssh/master.id_rsa /opt/ibm-cloud-private-3.2/cluster/ssh_key
+sudo chmod 400 /opt/ibm-cloud-private-3.2/cluster/ssh_key
 ```
 
-__Step 9__ - update `/opt/ibm-cloud-private-3.1.1/cluster/config.yaml` to disable/enable custom features
+__Step 9__ - update `/opt/ibm-cloud-private-3.2/cluster/config.yaml` to disable/enable custom features
 Follow this [link](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/installing/config_yaml.html) for this list of config parameters
 
 * Refer to the [GlusterFS configuration](https://github.com/cloudnativedemo/icp-notes/blob/master/installicp.md#configure-glusterfs-during-the-icp-install-optional) below prior to step 10 if you wish to install GlusterFS
@@ -96,8 +96,8 @@ Follow this [link](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/i
 
 __Step 10__ - start the installation
 ```
-cd /opt/ibm-cloud-private-3.1.1/cluster
-sudo docker run --net=host -t -e LICENSE=accept -v $(pwd):/installer/cluster ibmcom/icp-inception-amd64:3.1.1-ee install
+cd /opt/ibm-cloud-private-3.2/cluster
+sudo docker run --net=host -t -e LICENSE=accept -v $(pwd):/installer/cluster ibmcom/icp-inception-amd64:3.2-ee install
 ```
 
 If all are going well, the install process will take around 2 hrs. At the end of the installation, you will be able to see the URL to access ICP's admin console
@@ -131,7 +131,7 @@ Follow this [instructions](https://github.com/cloudnativedemo/icp-notes/tree/mas
 
 ---
 ### Configure GlusterFS during the icp install (optional)
-GlusterFs configuration guide with more details can be found on [ICP Knowledge Centre](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.1/manage_cluster/glusterfs_land.html)
+GlusterFs configuration guide with more details can be found on [ICP Knowledge Centre](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.2/manage_cluster/glusterfs_land.html)
 
 These steps are optional prior to icp install. 
 Glusterfs volumes must reside within worker nodes (3 or above)
@@ -194,9 +194,9 @@ echo dm_thin_pool | sudo tee -a /etc/modules-load.d/dm_thin_pool.conf
 ```
 
 
-- On the boot node, edit `/opt/ibm-cloud-private-3.1.1/cluster/hosts`
+- On the boot node, edit `/opt/ibm-cloud-private-3.2/cluster/hosts`
 ```
-tee -a /opt/ibm-cloud-private-3.1.1/cluster/hosts <<-EOF
+tee -a /opt/ibm-cloud-private-3.2/cluster/hosts <<-EOF
 [hostgroup-glusterfs]
 <REPLACE_WORKER_IP_1_HERE>
 <REPLACE_WORKER_IP_2_HERE>
@@ -205,7 +205,7 @@ EOF
 
 ```
 
-- On the boot node, edit `/opt/ibm-cloud-private-3.1.1/cluster/config.yaml`
+- On the boot node, edit `/opt/ibm-cloud-private-3.2/cluster/config.yaml`
 > Enable storage-glusterfs
 ```
 ...
@@ -213,7 +213,7 @@ management_services:
  storage-glusterfs: enabled
 ...
 ```
-> Add GlusterFS settings to `/opt/ibm-cloud-private-3.1.1/cluster/config.yaml`
+> Add GlusterFS settings to `/opt/ibm-cloud-private-3.2/cluster/config.yaml`
 ```
 ## GlusterFS Storage Settings
 storage-glusterfs:
@@ -270,8 +270,8 @@ storage-glusterfs:
 ### Add more worker node to an existing cluster
 - To add more worker node onto the cluster. On the boot node, run the following command:
 ```shell
-cd /opt/ibm-cloud-private-3.1.1/cluster
-sudo docker run --net=host -t -e LICENSE=accept -v $(pwd):/installer/cluster ibmcom/icp-inception-amd64:3.1.1-ee worker -l <NEW_WORKER_IP_1>,<NEW_WORKER_IP_2>,<NEW_WORKER_IP_3>
+cd /opt/ibm-cloud-private-3.2/cluster
+sudo docker run --net=host -t -e LICENSE=accept -v $(pwd):/installer/cluster ibmcom/icp-inception-amd64:3.2-ee worker -l <NEW_WORKER_IP_1>,<NEW_WORKER_IP_2>,<NEW_WORKER_IP_3>
 ```
 
 ## Notes:
