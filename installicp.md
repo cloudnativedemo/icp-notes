@@ -5,7 +5,7 @@
 - Before you install make sure that your server meet system requirements for ICP
 https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/supported_system_config/hardware_reqs.html
 - Download ICP's preconfigured Docker engine from IBM PPA `icp-docker-18.03.1_x86_64.bin` to `/tmp`
-- Download ICP installer from IBM PPA `ibm-cloud-private-x86_64-3.1.0.tar.gz` to `/tmp`
+- Download ICP installer from IBM PPA `ibm-cloud-private-x86_64-3.2.0.tar.gz` to `/tmp`
 ### Hardware requirements
 
 | Node name                                        | # node | CPU | RAM (GB) | File system                                                                                                                                                    | FS type                | OS                                 |
